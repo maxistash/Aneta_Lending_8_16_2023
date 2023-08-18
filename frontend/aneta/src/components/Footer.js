@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';   
 
 
@@ -11,7 +8,7 @@ function Footer() {
   
     return (
       <footer className="page-footer font-small blue pt-4">
-        <div style={{background: "black", color: "white"}}>
+        <div  className="header">
       <div className="container-fluid text-center text-md-left">
           <div className="row">
               <div className="col-md-6 mt-md-0 mt-3">

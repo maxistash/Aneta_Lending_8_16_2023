@@ -20,23 +20,21 @@ import { BrowserRouter as Router, Routes, Route }
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Signin from './components/Signin';
+import HomePage from './components/HomePage';
+import Home from './components/Home';
 
-// import Home from './pages';
-// import About from './pages/about';
-// import Blogs from './pages/blogs';
-// import SignUp from './pages/signup';
-// import Contact from './pages/contact';
+
  
 function App() {
     return (
         <Router>
             <Header />
             <Routes>
-                <Route exact path='/' element={<Signin />} />
+                <Route exact path='/' element={<Home />} />
+                <Route exact path='/login' element={<Signin />} />
                 <Route path='/footer' element={<Footer />} />
-                {/* <Route path='/contact' element={<Contact />} />
-                <Route path='/blogs' element={<Blogs />} />
-                <Route path='/sign-up' element={<SignUp />} /> */}
+                <Route path='/index' element={<Home />} />
+                
             </Routes>
             <Footer/>
         </Router>
