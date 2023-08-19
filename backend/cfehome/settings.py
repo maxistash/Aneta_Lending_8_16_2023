@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'algoliasearch_django',
     'api',
     'loans',
+    'applicants',
     'rest_framework',
     'rest_framework.authtoken',
     'search',
