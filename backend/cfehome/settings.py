@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-!m^(j_hk4-v+=$6w*^dlxed9%9rn56z862h)vk32x9!5h9xbi!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
@@ -62,10 +64,11 @@ ROOT_URLCONF = 'cfehome.urls'
 # this is how you can allow only certain places to access the backend
 CORS_URLS_REGEX = r'^/api/.*'
 CORS_ALLOWED_ORIGINS = []
-if DEBUG:
-    CORS_ALLOWED_ORIGINS += [
+# if DEBUG:
+CORS_ALLOWED_ORIGINS += [
         'http://localhost:8111',
-        'https://localhost:8111'
+        'https://localhost:8111',
+        'http://localhost:3000',
     ]
     
 

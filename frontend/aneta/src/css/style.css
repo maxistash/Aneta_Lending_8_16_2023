@@ -1,5 +1,5 @@
 .header {
-    background-color: rgb(9, 143, 232);
+    background-color: rgb(51,143,186,255);
     border-radius: 3px;
     position: sticky;
   top: 0;
@@ -12,4 +12,13 @@
 .homePageRow{
     min-height: 100vh;
     padding-top: 10%;
+}
+
+.application{
+    /* min-height: 100vh; */
+    padding-top: 2%;
+}
+
+.applicationForm{
+    padding-top: 3%; 
 }

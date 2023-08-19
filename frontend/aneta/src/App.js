@@ -22,6 +22,8 @@ import Footer from './components/Footer';
 import Signin from './components/Signin';
 import HomePage from './components/HomePage';
 import Home from './components/Home';
+import Application from './components/Application';
+
 
 
  
@@ -34,6 +36,10 @@ function App() {
                 <Route exact path='/login' element={<Signin />} />
                 <Route path='/footer' element={<Footer />} />
                 <Route path='/index' element={<Home />} />
+                <Route path='/h' element={<HomePage />} />
+                <Route path='/application' element={<Application />} />
+                
+
                 
             </Routes>
             <Footer/>

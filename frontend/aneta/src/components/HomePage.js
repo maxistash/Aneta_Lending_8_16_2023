@@ -15,7 +15,7 @@ function HomePage() {
                };
           // Create the POST requuest
           const {data} = await                                                                            
-                         axios.post('http://localhost:8000/api/token',
+                         axios.post('http://127.0.0.1:8000/api/token/',
                          user ,{withCredentials:true});
 
          // Initialize the access & refresh token in localstorage.      
