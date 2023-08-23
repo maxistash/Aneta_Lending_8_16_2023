@@ -5,18 +5,35 @@ import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';   
 import '../css/style.css'
 import logo from "../img/small.png"
+import { Button } from "react-bootstrap";
 
 
 
 
 function Header() {
-  const [isAuth, setIsAuth] = useState(false);
-  useEffect(() => {
-    if (localStorage.getItem('access_token') !== null) {
-       setIsAuth(true); 
-     }
-   }, [isAuth]);
+  const [currentUser, setCurrentUser] = useState();
 
+
+  useEffect(() => {
+    console.log(localStorage.getItem('access_token'));
+    console.log('below');
+    if (localStorage.getItem('access_token') !== null) {
+    console.log(localStorage.getItem('access_token'));
+
+      setCurrentUser(localStorage.getItem("access_token")); 
+     }
+   }, [currentUser]);
+
+  function Logout(){
+    console.log('logout;');
+    console.log(currentUser);
+    setCurrentUser(null); 
+    localStorage.setItem('access_token',null);
+    localStorage.setItem('refresh_token', null);
+    console.log(currentUser);
+
+}
+  
   
     return (
         <>
@@ -35,11 +52,12 @@ function Header() {
             </Nav>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-              {isAuth ? <Navbar.Text>
+              {currentUser? <Navbar.Text>
                 Signed in as: <a href="login">Heath Hartley</a>
+                <Button onClick={Logout}>Logout</Button>
               </Navbar.Text> : 
               <Navbar.Text>
-                 <a href="login">Login</a>
+                 <a href="">Login</a>
               </Navbar.Text>
               }
             </Navbar.Collapse>
