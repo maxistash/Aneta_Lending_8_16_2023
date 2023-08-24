@@ -1,24 +1,28 @@
 import React from "react";
-import { useState,  useRef, useEffect, useContext} from "react";
+import { useState,  useRef, useEffect} from "react";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import index from "../img/FullLogo.jpg";
 import Logo from "../img/FullLogo.jpg";
-import AuthContext from "../context/AuthProvider";
+import useAuth from "../hooks/useAuth";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import axios from "../api/axios";
 
 const LOGIN_URL = "token/";
 
 
-function Signin() {
-  const {setAuth }=  useContext(AuthContext);
+function Signin() { 
+  const {auth,setAuth }=  useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const userRef= useRef();
   const errRef= useRef();
 
   const [user, setUser]= useState('');
   const [pwd, setPwd]= useState('');
   const [errMsg, setErrMsg]= useState('');
-  const [success, setSuccess]= useState(false);
 
 useEffect(() =>{
   userRef.current.focus();
@@ -28,41 +32,10 @@ useEffect(() =>{
   setErrMsg('')
 },[user,pwd])
 
-  const [currentUser, setCurrentUser] = useState('');
-  const [registration, setRegistration] = useState(false);
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-
-  function submitLogin(){  
-    fetch('http://127.0.0.1:8000/api/token/', {
-      method: 'POST',
-      body: JSON.stringify({
-        username: username,
-        password: password
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-},
-})
-.then((response) => response.json())
-.then((data) => {
-   console.log(data);
-   console.log("data");
-   localStorage.setItem('access_token', data.access);
-   localStorage.setItem('refresh_token', data.refresh);
-   setCurrentUser(localStorage.getItem("access_token"));
-})
-.catch((err) => {
-   console.log(err.message);
-});
-};
-
-
 const handleSubmit = async (e) => {
   e.preventDefault();
   try{
+    console.log(LOGIN_URL);
     const response = await axios.post(LOGIN_URL, 
       JSON.stringify({username: user, password: pwd}),
       {
@@ -74,10 +47,12 @@ const handleSubmit = async (e) => {
     console.log(JSON.stringify(response?.data));
     console.log(JSON.stringify(response));
     const accessToken = response?.data?.access
-    setAuth({user, pwd, accessToken})
+    console.log(accessToken);
+    console.log("heath");
+    setAuth({ user, pwd, accessToken });
     setUser('');
     setPwd('');
-    setSuccess('');
+    navigate(from, { replace: true });
 
   }catch (err){
     if(!errMsg){
@@ -98,37 +73,6 @@ const handleSubmit = async (e) => {
 }
 
 
-
-
-
-  if(success){
-  
-  return (
-    <>
-    {success ? (<div></div>):(  //test for <>
-    <Container >
-      {/* <Row className="vh-100 d-flex justify-content-center align-items-center"> */}
-      <Row className="homePageRow">
-        <Col md={5} lg={5} >    
-          <img src={Logo} style={{ width: 600, height: 500, borderRadius: '5px' }}/>
-        </Col>
-        <Col md={5} lg={5} className="homePage">
-          <h1>Welcome to Aneta Lending</h1>
-          <h3>Get your personlized quote here</h3>
-          <Button className="header" variant="primary" type="submit">
-             Sign up
-          </Button>         
-          <Button className="header" variant="primary" type="submit">
-            Login
-          </Button>
-        </Col>
-      </Row>
-    </Container>
-    )}
-    </>
-  );
-  }
-   
   return (
       <Container>
       {/* <Row className="justify-content-md-center"><h1 className="text-center" >Aenta Lending</h1></Row> */}

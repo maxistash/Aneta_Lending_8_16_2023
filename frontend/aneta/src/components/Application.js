@@ -6,36 +6,25 @@ import textOnly from "../img/TextOnly.png"
 
 function Application() {
  const [secondApplicant, setSecondApplicant] = useState(false);
-//  const [value, setValue] = useState([1, 3]);
 
- /*
-  * The second argument that will be passed to
-  * `handleChange` from `ToggleButtonGroup`
-  * is the SyntheticEvent object, but we are
-  * not using it in this example so we will omit it.
-  */
  const handleChange = (val) => (setSecondApplicant(val));
  const handleC = (val) => {
     console.log(val)
  }
+
+ const handleSecondApplicant = (event) =>{
+    setSecondApplicant(event.target.checked);
+ }
     return (
         <>
-        <Container>
+        <Container >
             <Row className="application">
                 {/* <Col md={5} lg={6} className=""> */}
                     <img src={textOnly} style={{ width: 650, height: 120 }}/>
                 {/* </Col> */}
             </Row>
-            <ToggleButtonGroup type="radio" name='secondApplicant' value={secondApplicant} onChange={handleC}>
-      <ToggleButton id="tbg-btn-1" value={false}>
-        One Applicant 
-      </ToggleButton>
-      <ToggleButton id="tbg-btn-2" value={true} >
-       Two Applicant
-      </ToggleButton>
-    </ToggleButtonGroup>
-            <Row className="applicationForm">
-                <Col md={8} lg={8} xs={8}>
+            <Row className="d-flex justify-content-center">
+                <Col md={8} lg={6} xs={8}>
                 <Card className="shadow">
             <Card.Body>
                     <Form>
@@ -94,7 +83,9 @@ function Application() {
                             <Button variant="primary" type="submit">
                                 Submit
                             </Button>
-
+                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Second Applicant" onChange={handleSecondApplicant}/>
+                            </Form.Group>
                         </Col>
                         </Row>    
                     </Form>
@@ -107,14 +98,14 @@ function Application() {
 
 
 
- {secondApplicant ===false ?(<Row>
-    {/* <Row className="application">
-                {/* <Col md={5} lg={6} className=""> */}
-                    {/* <img src={textOnly} style={{ width: 650, height: 120 }}/> */}
-                {/* </Col> */}
-            {/* </Row> */} 
-            <Row >
-                <Col md={8} lg={8} xs={8}>
+ {secondApplicant ===true ?(<Row >
+    <Row className="application">
+                 <Col md={12} lg={12} className=""> 
+                     <h1>Second Applicant</h1>
+                     </Col> 
+            </Row> 
+            <Row className="d-flex justify-content-center">
+                <Col md={8} lg={6} xs={8}>
                 <Card className="shadow">
             <Card.Body>
                     <Form>
