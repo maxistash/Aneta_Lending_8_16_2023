@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Application from './components/Application';
 import Layout from './components/Layout';
 import RequireAuth from './components/RequireAuth';
+import Loans from './components/Loans';
 
 
 
@@ -19,9 +20,15 @@ function App() {
                 {/* public routes */}
                 <Route path='/login' element={<Signin />} />
                 <Route path='/' element={<Home />} />
+
+
                 {/* Private routes  */}
-                <Route element={<RequireAuth />}>             
-                    <Route path='application' element={<Application />} />
+                <Route element={<RequireAuth />}>     
+                <Route path='application' element={<Application />} />
+                <Route path='loans' element={<Loans />} />
+
+
+
                 </Route>
             </Route>
 
