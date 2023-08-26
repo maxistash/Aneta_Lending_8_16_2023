@@ -10,13 +10,15 @@ function Loans(props) {
     // let { state } = useLocation();
     const location = useLocation();
     const data = location.state?.data;
-    console.log(props, " props");
-    console.log(location, " useLocation Hook");
+    // console.log(props, " props");
+    // console.log(location, " useLocation Hook");
     useEffect(() => {
-        console.log(props, " props");
+        // console.log(props, " props");
         console.log(location, " useLocation Hook");
         const data = location.state?.data;
         console.log(data);
+
+        
 
     }, [])
   
@@ -25,10 +27,14 @@ function Loans(props) {
             <Row className="vh-100  justify-content-center align-items-center">
                 <Card>
                     <Card.Body>
-                    
-
-          {data.count}
-
+                        {data.count}
+                        {/* <div className="RowList">
+      {data.results.map(data.results, d =>
+        <div className="Row">
+          {d}
+        </div>
+      )}
+    </div> */}
                     </Card.Body>
                 </Card>
             </Row>

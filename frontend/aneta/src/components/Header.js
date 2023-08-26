@@ -58,7 +58,7 @@ function Header() {
                 <Button onClick={Logout}>Logout</Button>
               </Navbar.Text> : 
               <Navbar.Text>
-                 <a href="">Login</a>
+                 <a href="/login">Login</a>
               </Navbar.Text>
               }
             </Navbar.Collapse>

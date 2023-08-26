@@ -37,6 +37,7 @@ const handleSubmit = async (e) => {
   try{
     console.log(LOGIN_URL);
     const response = await axios.post(LOGIN_URL, 
+      // this is the body in the form of a string aka text
       JSON.stringify({username: user, password: pwd}),
       {
         headers: {
@@ -84,10 +85,7 @@ const handleSubmit = async (e) => {
           <Card className="shadow">
             <Card.Body>
               <div className="mb-3 mt-md-4">
-                {/* <h2 className="fw-bold mb-2 ">Welcome to Aneta Lending</h2> */}
-                <h2 className="fw-bold mb-2 ">This is a test and you are logged in</h2>
-                <h2 className="fw-bold mb-2 ">Enter your login and password</h2>
-                {/* <p className="mb-3">Please enter your login and password!</p> */}
+                <h2 className="fw-bold mb-2 ">Welcome</h2>
                 <div className="mb-3">
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
