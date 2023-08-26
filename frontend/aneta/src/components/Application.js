@@ -58,6 +58,9 @@ function Application() {
         }
     }, [])
 
+    // example for max
+    //use axiosPrivate use .get or .post 
+    // use the endpoint you want to hit
     const submitApplication = async(e) =>{
         e.preventDefault();
         
@@ -65,9 +68,12 @@ function Application() {
             try {
                 const response = await axiosPrivate.get('loans/', {
                     // signal: controller.signal
+                    //use a BODY when you are doing a .post
                 });
+                //the response.data is what the BACKEND returns when you compare and save an application
                 console.log(response.data);
                 setdataLoans(response.data);
+                //go to page to that shows the results
                 navigate('/loans/', {state:{ data : response.data }}); 
                 
                 // isMounted && setUsers(response.data);
@@ -79,22 +85,22 @@ function Application() {
             }
         
 
-        // const data= 
-        //     {
-        //         first_name: firstName,
-        //         last_name:lastName,
-        //         email : email,
-        //         phone_number : phoneNumber,
-        //         install_street : street,
-        //         install_city : city,
-        //         install_state : state,
-        //         install_zip : zip,
-        //         date_of_birth : 1,
-        //         ssn : social,
-        //         household_income : 100000,
-        //         debt_to_income_ratio : 1.2,
-        //         consent : consent,
-        // }
+        const data = 
+            {
+                first_name: firstName,
+                last_name:lastName,
+                email : email,
+                phone_number : phoneNumber,
+                install_street : street,
+                install_city : city,
+                install_state : state,
+                install_zip : zip,
+                date_of_birth : 1,
+                ssn : social,
+                household_income : 100000,
+                debt_to_income_ratio : 1.2,
+                consent : consent,
+        }
     }
     
 
