@@ -85,11 +85,11 @@ const handleSubmit = async (e) => {
           <Card className="shadow">
             <Card.Body>
               <div className="mb-3 mt-md-4">
-                <h2 className="fw-bold mb-2 ">Welcome</h2>
+                <h1 className="text-center">Welcome</h1>
                 <div className="mb-3">
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label className="text-center">
+                      <Form.Label className="text-centerf">
                         Username
                       </Form.Label>
                       <Form.Control type="text" placeholder="Username" ref={userRef} value={user} required onChange={e => setUser(e.target.value)}/>
