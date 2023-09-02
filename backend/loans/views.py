@@ -1,6 +1,6 @@
 from rest_framework import generics, mixins
 from .models import Loan
-from.serializers import LoanSerializer
+from .serializers import LoanSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
@@ -18,10 +18,10 @@ class LoanListCreateAPIView(StaffEditorPermissionMixin, UserQuerySetMixin, gener
     def perform_create(self, serializer):
         #going to be used to create user auth
         # email = serializer.validated_data.pop('email')
-        bank_id = serializer.validated_data.get('bank_id')
+        apr = serializer.validated_data.get('apr')
         loan_requirement = serializer.validated_data.get('loan_requirement') or None
         if loan_requirement is None:
-            loan_requirement = bank_id
+            loan_requirement = apr
         serializer.save(user = self.request.user, loan_requirement=loan_requirement)
 
 # THIS IS NOT NEEDED BECAUSE OF THE USERQUERYSETMIXIN
@@ -51,7 +51,7 @@ class LoanUpdateAPIView(StaffEditorPermissionMixin, UserQuerySetMixin, generics.
     def perform_update(self, serializer):
         instance=serializer.save()
         if not instance.loan_requirement:
-            instance.loan_requirement = instance.bank_id
+            instance.loan_requirement = instance.apr
         
         # return super().perform_update(serializer)
 
@@ -101,7 +101,7 @@ class LoanMixinView(
     
     def perform_create(self, serializer):
         #going to be used to create user auth
-        bank_id = serializer.validated_data.get('bank_id')
+        apr = serializer.validated_data.get('apr')
         loan_requirement = serializer.validated_data.get('loan_requirement') or None
         if loan_requirement is None:
             loan_requirement = "Credit Score of at least 750"
@@ -131,10 +131,10 @@ def loan_alt_view(request, pk=None, *args, **kwargs):
         # use this for creating stuff
         serializer = LoanSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            bank_id = serializer.validated_data.get('bank_id')
+            apr = serializer.validated_data.get('apr')
             loan_requirement = serializer.validated_data.get('loan_requirement') or None
             if loan_requirement is None:
-                loan_requirement = bank_id
+                loan_requirement = apr
             serializer.save(loan_requirement=loan_requirement)
             return Response(serializer.data)
         return Response({'invalid':'not good data'}, status=400)

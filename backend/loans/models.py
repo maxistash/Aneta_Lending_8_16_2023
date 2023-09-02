@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.db.models.query import QuerySet
 from django.db.models import Q
-
+from banks.models import Bank
 
 User = settings.AUTH_USER_MODEL
 
@@ -11,7 +11,7 @@ class LoanQuerySet(models.QuerySet):
         return self.filter(public=True)
     
     def search(self, query, user=None):
-        lookup = Q(bank_id__icontains=query) | Q(loan_requirement__icontains = query)
+        lookup = Q(apr__icontains=query) | Q(loan_requirement__icontains = query)
         queryset = self.is_public().filter(lookup)
         if user is not None:
             queryset2 = self.filter(user=user).filter(lookup)
@@ -30,7 +30,6 @@ class LoanManager(models.Manager):
 # Create your models here.
 class Loan(models.Model):
     user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
-    bank_id = models.CharField(max_length=30)
     loan_requirement = models.TextField(blank=True, null=True)
     apr = models.DecimalField(max_digits=6, decimal_places=2, default=2.99)
     amount = models.DecimalField(max_digits=7, decimal_places=2, default=50000)
@@ -39,6 +38,7 @@ class Loan(models.Model):
 #    THIS SHOULD USUALLY BE SET TO FALSE
     public = models.BooleanField(default=True)
     objects = LoanManager()
+    bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
 
     def is_public(self) -> bool:
         return self.public
@@ -49,3 +49,6 @@ class Loan(models.Model):
     
     def tax_percentage(self):
         return '30%'
+    
+    # def __str__(self):
+    #     return self.apr

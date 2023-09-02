@@ -1,12 +1,12 @@
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 from .models import Loan
-from .validators import validate_bank_id
+from .validators import validate_apr
 from api.serializers import UserPublicSerializer
 
 class LoanInlineSerializer(serializers.Serializer):
     url = serializers.HyperlinkedIdentityField(view_name='loan-detail', lookup_field='pk')
-    bank_id = serializers.CharField(read_only=True)
+    apr = serializers.DecimalField(read_only=True, decimal_places=2, max_digits=4)
 
 
 class LoanSerializer(serializers.ModelSerializer):
@@ -20,13 +20,13 @@ class LoanSerializer(serializers.ModelSerializer):
     # USE THIS IF YOU WANT INFORMATION ABOUT THE USER ASSOCIATED WITH ANYTHING THEY CREATE SPECIFICALLY, SO SAY IN THE FUTURE YOU 
     # WANT TO ADD AN EMAIL AND FIRST AND LAST NAME TO THE CUSTOMER THAT CORRESPONDS TO THE SALES REP FOR ANALYTICS PURPOSES 
     
-    bank_id = serializers.CharField(validators=[validate_bank_id])
+    apr = serializers.DecimalField(validators=[validate_apr], max_digits=4, decimal_places=2)
     class Meta:
         model = Loan
         fields = [
             'owner',
             'pk',
-            'bank_id',
+            'bank',
             'loan_requirement',
             'apr',
             'amount',

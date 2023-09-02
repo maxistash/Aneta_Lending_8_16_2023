@@ -6,5 +6,5 @@ venv/
 py_client/
 js_client/
 backend/search/
-backend/loans/
-backend/api
+# backend/loans/
+# backend/api

@@ -7,7 +7,7 @@ from api.serializers import UserPublicSerializer
 class ApplicantSerializer(serializers.ModelSerializer):
     user = UserPublicSerializer(read_only=True)
 
-    url = serializers.HyperlinkedIdentityField(view_name='loan-detail', lookup_field='pk')
+    url = serializers.HyperlinkedIdentityField(view_name='applicant-detail', lookup_field='pk')
     # rep_email = serializers.EmailField(source='user.email', read_only=True)
     # applicant_id = serializers.CharField(validators=[validate_applicant_id])
 
@@ -27,6 +27,7 @@ class ApplicantSerializer(serializers.ModelSerializer):
             'state',
             'zip_code',
             'dob',
+            'ssn',
             'url',
             'public',
         ]
