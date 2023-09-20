@@ -1,0 +1,34 @@
+.header {
+    background-color: rgb(51,143,186,255);
+    border-radius: 3px;
+    position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.homePageRow{
+    min-height: 100vh;
+    padding-top: 10%;
+}
+
+.application{
+    /* min-height: 100vh; */
+    padding-top: 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.applicationForm{
+    padding-top: 3%; 
+    min-height: 100vh;
+}
+
+.homePage{
+    /* min-height: 100vh; */
+    padding-top: 2%;
+    /* display: block; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
