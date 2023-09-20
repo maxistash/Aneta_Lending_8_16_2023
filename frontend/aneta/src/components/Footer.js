@@ -35,7 +35,10 @@ function Footer() {
       </div>
   
       <div className="footer-copyright text-center">© 2023 Copyright:
-          <a> Maxistash@gmail.com</a>
+          <a> Aneta Landing</a>
+      </div>
+      <div className="text-center">
+        <a>All Right Reserved</a>
       </div>
       </div>
   

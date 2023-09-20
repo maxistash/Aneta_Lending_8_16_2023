@@ -15,18 +15,18 @@ function Home() {
   },[])
   return (
     <Container >
-      {/* <Row className="vh-100 d-flex justify-content-center align-items-center"> */}
-      <Row className="homePageRow">
-        <Col md={5} lg={5} >   
-          <img src={Logo} style={{ width: 600, height: 500, borderRadius: '5px' }}/>
-        </Col>
-        <Col md={5} lg={5} className="homePage">
-          <h1>Welcome!</h1>
-          <Button className="header" href='/application'variant="primary" type="submit">
+      <Row className="vh-100 d-flex justify-content-center align-items-center">
+      {/* <Row className="homePageRow"> */}
+       <Row>
+          <img src={Logo} className="application" style={{ width: 500, height: 425, borderRadius: '5px' }}/>
+      </Row>
+       <Row> 
+        <Button className="header" href='/application'variant="primary" type="submit">
              Apply for your personal quote here!
-          </Button>         
+          </Button> 
+      </Row> 
           
-        </Col>
+       
       </Row>
     </Container>
   );    

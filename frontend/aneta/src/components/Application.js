@@ -114,7 +114,7 @@ function Application() {
             <Container >
                 <Row className="application">
                     <img src={textOnly} style={{ width: 650, height: 120 }}/>
-                    <Link to="/loans" state={{ data: "Heath is the best" }} className="link">asdf</Link>
+                    <Link to="/loans" state={{ data: "Heath is the best" }} className="link"></Link>
                 </Row>
                 
                 <Row className="d-flex justify-content-center">
@@ -192,7 +192,7 @@ function Application() {
                 </Row>
                 {secondApplicant ===true ?(<Row >
                     <Row className="application">
-                                <Col md={12} lg={12} className=""> 
+                                <Col md={8} lg={6} xs={8} className=""> 
                                     <h1>Co-Signer</h1>
                                     </Col> 
                             </Row> 

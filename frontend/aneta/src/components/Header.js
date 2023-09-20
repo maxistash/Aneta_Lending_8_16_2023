@@ -41,20 +41,18 @@ function Header() {
         <Navbar className="header">
           <Container >
 
-            <Navbar.Brand Link="/">Aneta</Navbar.Brand>
-            <Nav href="/"><img src={logo} style={{ width: 50, height: 50, borderRadius: "2px" }}/></Nav>
+            <Navbar.Brand style={{fontSize: "25px"}} href="/">Aneta</Navbar.Brand>
+            <Nav href="/"><img  src={logo} style={{ width: 50, height: 50, borderRadius: "2px" }}/></Nav>
 
-            <Nav className="me-auto">
-
-              <Nav.Link href="application">Application</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-              <Nav.Link href="#pricing">About Us</Nav.Link>
-
-            </Nav>
+            
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
+              
+            <Nav.Link style={{paddingRight: "20px", fontSize: "20px"}} href="application">Application</Nav.Link>
+              <Nav.Link style={{paddingRight: "20px",fontSize: "20px"}}  href="#pricing">Pricing</Nav.Link>
+              <Nav.Link style={{paddingRight: "20px",fontSize: "20px"}} href="#pricing">About Us</Nav.Link>
               {auth?.user ?  <Navbar.Text>
-                Signed in as: <a href="login">{auth.user}</a>
+                Signed in as: <a href="login" style={{pfontSize: "30px"}}>{auth.user}</a>
                 <Button onClick={Logout}>Logout</Button>
               </Navbar.Text> : 
               <Navbar.Text>
