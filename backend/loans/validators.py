@@ -1,13 +1,17 @@
 # this can be used for forms, models
 from rest_framework import serializers
 from .models import Loan
+# from banks.models import Bank
 from rest_framework.validators import UniqueValidator
 
 
-def validate_bank_id(value):
-        queryset = Loan.objects.filter(bank_id__iexact=value)
+def validate_apr(value):
+        # may try something here where we filter twice; once by once by bank name and then by apr because that what sales reps use
+        queryset = Loan.objects.filter(apr__iexact=value)
+        # queryset2 = Loan.objects.filter(bank__iexact=value)
         if queryset.exists():
-            raise serializers.ValidationError(f'We already have a Bank listed under the name of {value}')
+            # if queryset2.exists():
+            raise serializers.ValidationError(f'We already have a Loan for Bank X with the value of {value}')
         return value
 
 # def validate_bank_not_allowed(value):

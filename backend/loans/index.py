@@ -8,12 +8,12 @@ class LoanIndex(AlgoliaIndex):
     # should_index = 'is_public'
     fields = [
         'user',
-        'bank_id',
+        'apr',
         'loan_requirement',
         'term',
         'public'   
 ]
     settings = {
-        'searchableAttributes': ['bank_id', 'loan_requirement'],
+        'searchableAttributes': ['apr', 'loan_requirement'],
         'attributesForFaceting':['user', 'public']
     }
