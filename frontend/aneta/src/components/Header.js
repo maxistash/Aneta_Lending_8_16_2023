@@ -26,6 +26,7 @@ function Header() {
    }, [currentUser]);
 
   function Logout(){
+    console.log(auth);
     console.log('logout;');
     console.log(currentUser);
     setCurrentUser(null); 
@@ -48,7 +49,7 @@ function Header() {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               
-            <Nav.Link style={{paddingRight: "20px", fontSize: "20px"}} href="application">Application</Nav.Link>
+            <Nav.Link style={{paddingRight: "20px", fontSize: "20px"}} href="/application">Application</Nav.Link>
               <Nav.Link style={{paddingRight: "20px",fontSize: "20px"}}  href="#pricing">Pricing</Nav.Link>
               <Nav.Link style={{paddingRight: "20px",fontSize: "20px"}} href="#pricing">About Us</Nav.Link>
               {auth?.user ?  <Navbar.Text>

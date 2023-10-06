@@ -34,3 +34,10 @@ class ApplicantListCreateAPIView(StaffEditorPermissionMixin, UserQuerySetMixin, 
     #     return queryset.filter(user=request.user)
 
 applicant_list_create_view = ApplicantListCreateAPIView.as_view()
+
+
+class ApplicantDetailAPIView(StaffEditorPermissionMixin, UserQuerySetMixin, generics.RetrieveAPIView):
+    queryset = Applicant.objects.all()
+    serializer_class = ApplicantSerializer
+
+applicant_detail_view = ApplicantDetailAPIView.as_view()
